@@ -18,7 +18,7 @@ void setup()
 
   //Wire.begin();
 
-  sensor.begin(4,5);
+  sensor.begin(4,5)
 
   delay(100);
   while (sensor.wakeup() == false)

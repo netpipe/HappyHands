@@ -1,9 +1,9 @@
 //
-//    FILE: GY521_pitch_roll_yaw.ino
+//    FILE: test1.ino
 //  AUTHOR: Rob Tillaart
 // VERSION: 0.1.0
-// PURPOSE: demo PRY
-//    DATE: 2020-08-06
+// PURPOSE: minimal demo
+//    DATE: 2020-07-01
 
 #include "GY521.h"
 
@@ -18,7 +18,7 @@ void setup()
 
   //Wire.begin();
 
-  sensor.begin(4,5);
+  sensor.begin(4,5)
 
   delay(100);
   while (sensor.wakeup() == false)
@@ -27,8 +27,8 @@ void setup()
     Serial.println("\tCould not connect to GY521");
     delay(1000);
   }
-  sensor.setAccelSensitivity(2);  // 8g
-  sensor.setGyroSensitivity(1);   // 500 degrees/s
+  sensor.setAccelSensitivity(0);  // 2g
+  sensor.setGyroSensitivity(0);   // 250 degrees/s
 
   sensor.setThrottle();
   Serial.println("start...");
@@ -45,25 +45,39 @@ void setup()
 void loop()
 {
   sensor.read();
-  float pitch = sensor.getPitch();
-  float roll  = sensor.getRoll();
-  float yaw   = sensor.getYaw();
+  int ax = sensor.getAccelX();
+  int ay = sensor.getAccelY();
+  int az = sensor.getAccelZ();
+  int gx = sensor.getGyroX();
+  int gy = sensor.getGyroY();
+  int gz = sensor.getGyroZ();
+  int t = sensor.getTemperature();
 
   if (counter % 10 == 0)
   {
-    Serial.println("\nCNT\tPITCH\tROLL\tYAW");
+    Serial.println("\n\tACCELEROMETER\t\tGYROSCOPE\t\tTEMPERATURE");
+    Serial.println("\tax\tay\taz\tgx\tgy\tgz\tT");
   }
 
   Serial.print(counter);
   Serial.print('\t');
-  Serial.print(pitch, 3);
+  Serial.print(ax);
   Serial.print('\t');
-  Serial.print(roll, 3);
+  Serial.print(ay);
   Serial.print('\t');
-  Serial.print(yaw, 3);
+  Serial.print(az);
+  Serial.print('\t');
+  Serial.print(gx);
+  Serial.print('\t');
+  Serial.print(gy);
+  Serial.print('\t');
+  Serial.print(gz);
+  Serial.print('\t');
+  Serial.print(t);
   Serial.println();
 
   counter++;
+  delay(1000);
 }
 
 // -- END OF FILE --

@@ -98,7 +98,6 @@ private:
   bool     _throttle = true;        // to prevent reading too fast
   uint16_t _throttleTime = GY521_THROTTLE_TIME;
   uint32_t _lastTime = 0;           // to measure duration for math & throttle
-    uint32_t _lastMicros = 0;    
   int16_t  _error = GY521_OK;       // initially everything is OK
 
   uint8_t  _afs = 0;                // sensitivity factor
