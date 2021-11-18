@@ -91,8 +91,12 @@ void error(char* msg)
     exit(EXIT_FAILURE);
 }
 
-int main(int argc, char *argv[])
+int main()
 {
+
+const char *argv1[]={“appname”,”-p /dev/ttyUSB0”,”-r”,"-b 9600",”null”};
+int argc1 = sizeof(argv1) / sizeof(char*) – 1;
+
     const int buf_max = 256;
 
     int fd = -1;
@@ -190,14 +194,19 @@ int main(int argc, char *argv[])
             }
             if(rc==-1) error("error writing");
             break;
-        case 'r':{
-while(1){
+        case 'r':{ //run loop
+	while(1){
+
             if( fd == -1 ) error("serial port not opened");
             memset(buf,0,buf_max);  //
             serialport_read_until(fd, buf, eolchar, buf_max, timeout);
             if( !quiet ) printf("read string:");
             printf("%s\n", buf);
-}}
+	//std::string tester = buf;
+		
+
+	}
+}
             break;
         case 'F':
             if( fd == -1 ) error("serial port not opened");
