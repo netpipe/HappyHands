@@ -140,7 +140,7 @@ int argc = sizeof(argv) / sizeof(char*) -1;
     int baudrate = 9600;  // default
     char quiet=0;
     char eolchar = '\n';
-    int timeout = 500;
+    int timeout = 100;
     char buf[buf_max];
     int rc,n;
 
@@ -231,6 +231,9 @@ int argc = sizeof(argv) / sizeof(char*) -1;
             if(rc==-1) error("error writing");
             break;
         case 'r':{ //run loop
+
+         scene::ISceneNode* cube = smgr->addCubeSceneNode();
+
 	while(device->run())
 	{
 
@@ -239,15 +242,21 @@ int argc = sizeof(argv) / sizeof(char*) -1;
             serialport_read_until(fd, buf, eolchar, buf_max, timeout);
             if( !quiet ) printf("read string:");
             printf("%s\n", buf);
-//	string tester = buf;
+	//core::string tester = &buf;
+	printf("%s",buf);
+	std::string test(buf);
+   irr::core::stringc test2( test.c_str());
+	printf("%stest\n",test.c_str());
+	printf("%stest2\n",test2.c_str());
+	//test2.findFirstChar("X");
+	printf("%stest3\n",);
 
 	int lastFPS = -1;
 
- scene::ISceneNode* cube = smgr->addCubeSceneNode();
 		if (device->isWindowActive())
 		{
 			driver->beginScene(true, true, video::SColor(255,200,200,200));
-
+//todo put values and math here
       //   cube->setPosition(core::vector3df(0,0,10));
        //     cube->setScale(core::vector3df(1,1,1));
 			smgr->drawAll();
