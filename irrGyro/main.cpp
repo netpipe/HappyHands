@@ -121,7 +121,17 @@ int argc = sizeof(argv) / sizeof(char*) -1;
 	video::IVideoDriver* driver = device->getVideoDriver();
 	scene::ISceneManager* smgr = device->getSceneManager();
 
+	device->getFileSystem()->addFileArchive("./map-20kdm2.pk3");
+	scene::IAnimatedMesh* mesh = smgr->getMesh("20kdm2.bsp");
+	scene::ISceneNode* node = 0;
 
+	if (mesh)
+		node = smgr->addOctreeSceneNode(mesh->getMesh(0), 0, -1, 1024);
+    if (node)
+		node->setPosition(core::vector3df(-1300,-144,-1249));
+
+	smgr->addCameraSceneNodeFPS();
+//		device->getCursorControl()->setVisible(false);
 
     const int buf_max = 256;
 
@@ -229,14 +239,17 @@ int argc = sizeof(argv) / sizeof(char*) -1;
             serialport_read_until(fd, buf, eolchar, buf_max, timeout);
             if( !quiet ) printf("read string:");
             printf("%s\n", buf);
-	//std::string tester = buf;
+//	string tester = buf;
 
 	int lastFPS = -1;
 
-
+ scene::ISceneNode* cube = smgr->addCubeSceneNode();
 		if (device->isWindowActive())
 		{
 			driver->beginScene(true, true, video::SColor(255,200,200,200));
+
+      //   cube->setPosition(core::vector3df(0,0,10));
+       //     cube->setScale(core::vector3df(1,1,1));
 			smgr->drawAll();
 			driver->endScene();
 

@@ -1027,3 +1027,23 @@
 	<string.h>
 	<sys/ioctl.h>
 
+1637200501 source:/home/netpipe/Desktop/newArduino/HappyHands/irrGyro/main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<getopt.h>
+	"arduino-serial-lib.h"
+	<irrlicht.h>
+	<iostream>
+
+1637198422 /home/netpipe/Desktop/newArduino/HappyHands/irrGyro/arduino-serial-lib.h
+	<stdint.h>
+	<stdio.h>
+	<unistd.h>
+	<fcntl.h>
+	<errno.h>
+	<termios.h>
+	<string.h>
+	<sys/ioctl.h>
+
