@@ -26,14 +26,12 @@
 			<Add library="GL" />
 			<Add library="glut" />
 			<Add library="GLU" />
+			<Add library="m" />
 		</Linker>
 		<Unit filename="p5glove.h" />
 		<Unit filename="p5hand.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Extensions>
-			<code_completion />
-			<debugger />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
