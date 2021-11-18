@@ -140,7 +140,7 @@ int argc = sizeof(argv) / sizeof(char*) -1;
     int baudrate = 9600;  // default
     char quiet=0;
     char eolchar = '\n';
-    int timeout = 5000;
+    int timeout = 500;
     char buf[buf_max];
     int rc,n;
 

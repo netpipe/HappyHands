@@ -41,10 +41,13 @@
 		<Compiler>
 			<Add option="-g" />
 			<Add directory="../../include" />
+			<Add directory="Irrlicht" />
+			<Add directory="/home/netpipe/gamedev/irrlicht-1.8.4/include" />
 		</Compiler>
 		<Linker>
 			<Add library="Irrlicht" />
 			<Add library="usb" />
+			<Add directory="/home/netpipe/gamedev/irrlicht-1.8.4/lib/Linux" />
 		</Linker>
 		<Unit filename="arduino-serial-lib.h" />
 		<Unit filename="main.cpp" />
