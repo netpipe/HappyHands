@@ -249,7 +249,7 @@ int argc = sizeof(argv) / sizeof(char*) -1;
 	printf("%stest\n",test.c_str());
 	printf("%stest2\n",test2.c_str());
 	//test2.findFirstChar("X");
-	printf("%stest3\n",);
+//	printf("%stest3\n",);
 
 	int lastFPS = -1;
 
