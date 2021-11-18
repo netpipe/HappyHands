@@ -59,6 +59,14 @@
 #include <irrlicht.h>
 #include <iostream>
 using namespace irr;
+
+#include <sstream>
+#include <string>
+#include <vector>
+using namespace std;
+
+float GX,GY,GZ;
+float AX,AY,AZ;
 //
 void usage(void)
 {
@@ -240,16 +248,79 @@ int argc = sizeof(argv) / sizeof(char*) -1;
             if( fd == -1 ) error("serial port not opened");
             memset(buf,0,buf_max);  //
             serialport_read_until(fd, buf, eolchar, buf_max, timeout);
-            if( !quiet ) printf("read string:");
-            printf("%s\n", buf);
+           // if( !quiet )
+            // printf("read string:");
+          //  printf("%s\n", buf);
 	//core::string tester = &buf;
-	printf("%s",buf);
-	std::string test(buf);
-   irr::core::stringc test2( test.c_str());
-	printf("%stest\n",test.c_str());
-	printf("%stest2\n",test2.c_str());
+	//if (buf !=""){
+	//printf("%s",buf);
+	//std::string test(buf);
+  // irr::core::stringc test2( test.c_str());
+	//printf("%stest\n",test.c_str());
+	//printf("%stest2\n",test2.c_str());
+
+
+	char split_with=':';
+    vector<string> words;
+    //words.push_back("test");
+    string token;
+    stringstream ss(buf);
+    while(getline(ss , token , split_with)) words.push_back(token);
+
+	for(int i = 0; i < words.size(); i++)
+	{
+		std::cout << i << words[i] << std::endl;
+		if (i=0){
+		///GX=stof(words[i].c_str());
+		}
+		if (i=1){
+		///GY=stof(words[i].c_str());
+		//        printf("%i : thisspot",stoi(words[i].c_str() ));
+		}
+
+        //***** alternate method *******
+		//std::cout << myVector.at(i) << std::endl;
+	}
+
+
 	//test2.findFirstChar("X");
 //	printf("%stest3\n",);
+//gcode_program p = parse_gcode(buf);
+//p.get_block(0).get_chunk(0)
+
+//vector<std::string> tokens;
+////tokens[0]="test";
+////tokens[1]="test";
+//for (auto i = strtok(&test[0], "X"); i != NULL; i = strtok(NULL, " "))
+//    tokens.push_back(i);
+//printf("%s : thisspot",tokens[0].c_str());
+
+//core::stringc test5;
+////  char str[] ="- This, a sample string.";
+//  char * pch;
+////  printf ("Splitting string \"%s\" into tokens:\n",str);
+//  pch = strtok (buf,"X");
+// //   test5+=pch;
+//  while (pch != NULL)
+//  {
+//    //test5+=pch;
+//    printf ("%s\n",pch);
+//    pch = strtok (NULL, "X");
+//
+//  }
+//   //   printf ("%s - tokenized\n",test5.c_str());
+//
+
+
+//char *token = strtok(test.c_str(), "-");
+//while (token)
+//{
+//test5=token;
+// //   cout<<token;
+//    token = strtok(NULL, "-");
+//}
+////      printf ("%s - tokenized\n",test5.c_str());
+
 
 	int lastFPS = -1;
 
