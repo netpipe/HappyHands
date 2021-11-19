@@ -281,49 +281,12 @@ std::string::size_type sz;
             GY=atof(words[i].c_str());
 		//        printf("%i : thisspot",stoi(words[i].c_str() ));
 		}
-
+		if (i==2){
+		            GZ=atof(words[i].c_str());
+		}
         //***** alternate method *******
 		//std::cout << myVector.at(i) << std::endl;
 	}
-
-
-	//test2.findFirstChar("X");
-//	printf("%stest3\n",);
-//gcode_program p = parse_gcode(buf);
-//p.get_block(0).get_chunk(0)
-
-//vector<std::string> tokens;
-////tokens[0]="test";
-////tokens[1]="test";
-//for (auto i = strtok(&test[0], "X"); i != NULL; i = strtok(NULL, " "))
-//    tokens.push_back(i);
-//printf("%s : thisspot",tokens[0].c_str());
-
-//core::stringc test5;
-////  char str[] ="- This, a sample string.";
-//  char * pch;
-////  printf ("Splitting string \"%s\" into tokens:\n",str);
-//  pch = strtok (buf,"X");
-// //   test5+=pch;
-//  while (pch != NULL)
-//  {
-//    //test5+=pch;
-//    printf ("%s\n",pch);
-//    pch = strtok (NULL, "X");
-//
-//  }
-//   //   printf ("%s - tokenized\n",test5.c_str());
-//
-
-
-//char *token = strtok(test.c_str(), "-");
-//while (token)
-//{
-//test5=token;
-// //   cout<<token;
-//    token = strtok(NULL, "-");
-//}
-////      printf ("%s - tokenized\n",test5.c_str());
 
 
         int lastFPS = -1;
