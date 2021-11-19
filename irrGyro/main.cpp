@@ -282,7 +282,7 @@ std::string::size_type sz;
 		//        printf("%i : thisspot",stoi(words[i].c_str() ));
 		}
 		if (i==2){
-		            GZ=atof(words[i].c_str());
+		          //  GZ=atof(words[i].c_str()); //comment out rotation here to see it more like a joystick
 		}
         //***** alternate method *******
 		//std::cout << myVector.at(i) << std::endl;
