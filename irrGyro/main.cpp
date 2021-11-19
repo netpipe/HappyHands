@@ -259,6 +259,7 @@ int argc = sizeof(argv) / sizeof(char*) -1;
 	//printf("%stest\n",test.c_str());
 	//printf("%stest2\n",test2.c_str());
 
+std::string::size_type sz;
 
 	char split_with=':';
     vector<string> words;
@@ -270,11 +271,14 @@ int argc = sizeof(argv) / sizeof(char*) -1;
 	for(int i = 0; i < words.size(); i++)
 	{
 		std::cout << i << words[i] << std::endl;
-		if (i=0){
-		///GX=stof(words[i].c_str());
+		if (i==0){
+		  GX=atof(words[i].c_str());
+           // GX=stof(words[i].substr(sz));
+           // GX=stof(words[i],&sz);
+           // GX=atof(words[i]);
 		}
-		if (i=1){
-		///GY=stof(words[i].c_str());
+		if (i==1){
+            GY=atof(words[i].c_str());
 		//        printf("%i : thisspot",stoi(words[i].c_str() ));
 		}
 
@@ -322,14 +326,17 @@ int argc = sizeof(argv) / sizeof(char*) -1;
 ////      printf ("%s - tokenized\n",test5.c_str());
 
 
-	int lastFPS = -1;
+        int lastFPS = -1;
 
 		if (device->isWindowActive())
 		{
 			driver->beginScene(true, true, video::SColor(255,200,200,200));
 //todo put values and math here
-      //   cube->setPosition(core::vector3df(0,0,10));
-       //     cube->setScale(core::vector3df(1,1,1));
+         cube->setPosition(core::vector3df(0,10,10));
+            cube->setScale(core::vector3df(1,1,1));
+            cube->setRotation(core::vector3df(GX,GY,GZ));
+
+
 			smgr->drawAll();
 			driver->endScene();
 
@@ -348,8 +355,8 @@ int argc = sizeof(argv) / sizeof(char*) -1;
 		}
 		else
 			device->yield();
-	}
-}
+            }
+        }
             break;
         case 'F':
             if( fd == -1 ) error("serial port not opened");
