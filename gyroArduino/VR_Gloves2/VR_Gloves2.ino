@@ -33,7 +33,7 @@ void CallibrateSensors()
 
 void setup() {
 
-  Serial.begin(115200);
+  Serial.begin(9600);
   delay(5000);
   while (!Serial)
   {
@@ -58,12 +58,12 @@ Wire.begin();
   */
   //Setting Senstivity
 
-    Main.setAccelSensitivity(0);  // 2g
+    Main.setAccelSensitivity(2);  // 2g
   Main.setGyroSensitivity(0);   // 250 degrees/s
   
  // Serial.println(Main.setAccelSensitivity(2));  // 8g
  // Main.setGyroSensitivity(1);   // 500 degrees/s
-//  Main.setThrottle();
+  Main.setThrottle();
   /*
     //Thumb Sensor
     Thumb.setAccelSensitivity(2);  // 8g
@@ -145,7 +145,7 @@ uint32_t then;
 
 
   void test(){
-    Serial.println("test");
+   // Serial.println("test");
     int factor=1;
      aax = Main.getAccelX()*factor;
     aay =  Main.getAccelY()*factor;
@@ -165,9 +165,9 @@ uint32_t then;
   //posy += ay;
   //posz += az;
   
-  posx += ax-aax2;
-  posy += ay-aay2;
-  posz += az-aaz2;
+      posx += ax-aax2;
+      posy += ay-aay2;
+      posz += az-aaz2;
        aax2=aax;
        aay2=aay;
        aaz2=aaz;
@@ -253,7 +253,7 @@ void loop()
   float ry = IY - y;
   float rz = IZ - z;
   
-  #define mprint
+//  #define mprint
   #ifdef mprint
   //gyro rotation axis
   Serial.print("x=");
@@ -263,17 +263,34 @@ void loop()
   Serial.print("z=");
   Serial.println(z);
 #endif
-  #ifdef mprint
+  #define mprinta
+  #ifdef mprinta
   //gyro rotation axis
-  Serial.print("xa=");
-  Serial.print(xa);
-  Serial.print("ya=");
-  Serial.print(ya);
-  Serial.print("za=");
-  Serial.println(za);
+  #define comlink
+    #ifdef comlink
+    //  Serial.print("xa=");
+      Serial.print(xa);
+      Serial.print(":");
+      Serial.print(ya);
+      Serial.print(":");
+      Serial.println(za);
+    #else
+      Serial.print("xa=");
+      Serial.print(xa);
+      Serial.print("ya=");
+      Serial.print(ya);
+      Serial.print("za=");
+      Serial.println(za);
+    #endif
 #endif
 
-  #define mrprint2
+//  #define mrprint2
+
+   //  #define mprintaa  //aax
+    //#define mprintaa2
+
+
+     
   #ifdef mrprint2  //rotation
     Serial.print("rx=");
   Serial.print(rx);
@@ -282,7 +299,7 @@ void loop()
   Serial.print("rz=");
   Serial.println(rz);
   #endif
-      #define mprintaa
+
       #ifdef mprintaa
   Serial.print("aax=");
   Serial.print(aax);
@@ -292,8 +309,8 @@ void loop()
   Serial.println(aaz);
   #endif
   
-      //#define mprintaa2
-      #ifdef mprintaa2
+
+  #ifdef mprintaa2
   Serial.print("aax3=");
   Serial.print(aax-aax2);
   Serial.print("aay3=");
@@ -301,8 +318,9 @@ void loop()
   Serial.print("aaz3=");
   Serial.println(aaz-aaz2);
   #endif
-    #define mprint2
-    #ifdef mprint2
+  
+ // #define mprint2
+  #ifdef mprint2
   Serial.print("ax=");
   Serial.print(arx);
   Serial.print("ay=");
@@ -310,8 +328,9 @@ void loop()
   Serial.print("az=");
   Serial.println(arz);
   #endif
-    #define posprint
-    #ifdef posprint
+  
+ // #define posprint
+  #ifdef posprint
   Serial.print("posx=");
   Serial.print(posx);
   Serial.print("posy=");
