@@ -250,7 +250,7 @@ int argc = sizeof(argv) / sizeof(char*) -1;
             serialport_read_until(fd, buf, eolchar, buf_max, timeout);
            // if( !quiet )
             // printf("read string:");
-          //  printf("%s\n", buf);
+            printf("%s", buf);
 	//core::string tester = &buf;
 	//if (buf !=""){
 	//printf("%s",buf);
@@ -270,19 +270,26 @@ std::string::size_type sz;
 
 	for(int i = 0; i < words.size(); i++)
 	{
-		std::cout << i << words[i] << std::endl;
+	//	std::cout << i << words[i] << std::endl;
 		if (i==0){
-		  GX=atof(words[i].c_str());
+            if  ( (atof(words[i].c_str()) >= 0.01) || (atof(words[i].c_str()) <= -0.01)){
+             GX=atof(words[i].c_str());
+	    printf("0%f : thisspot\n",atof(words[i].c_str() ));
+
            // GX=stof(words[i].substr(sz));
            // GX=stof(words[i],&sz);
            // GX=atof(words[i]);
+           } else{
+           		//  printf("!");
+           };
 		}
 		if (i==1){
             GY=atof(words[i].c_str());
-		//        printf("%i : thisspot",stoi(words[i].c_str() ));
+		  //      printf("1%f : thisspot\n",atof(words[i].c_str() ));
 		}
 		if (i==2){
-		          //  GZ=atof(words[i].c_str()); //comment out rotation here to see it more like a joystick
+		            GZ=atof(words[i].c_str()); //comment out rotation here to see it more like a joystick
+		    //          printf("2%f : thisspot\n",atof(words[i].c_str() ));
 		}
         //***** alternate method *******
 		//std::cout << myVector.at(i) << std::endl;
@@ -297,7 +304,7 @@ std::string::size_type sz;
 //todo put values and math here
          cube->setPosition(core::vector3df(0,10,10));
             cube->setScale(core::vector3df(1,1,1));
-            cube->setRotation(core::vector3df(GX,GY,GZ));
+            cube->setRotation(core::vector3df(-GX,-GZ,-GY));
 
 
 			smgr->drawAll();
