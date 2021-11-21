@@ -265,6 +265,7 @@ int argc = sizeof(argv) / sizeof(char*) -1;
 
 std::string::size_type sz;
 
+//https://www.codegrepper.com/code-examples/cpp/c%2B%2B+print+vector+of+strings
 	char split_with=':';
     vector<string> words;
     //words.push_back("test");
