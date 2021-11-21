@@ -250,7 +250,11 @@ int argc = sizeof(argv) / sizeof(char*) -1;
             serialport_read_until(fd, buf, eolchar, buf_max, timeout);
            // if( !quiet )
             // printf("read string:");
-            printf("%s", buf);
+
+
+           /// printf("%s", buf);
+
+
 	//core::string tester = &buf;
 	//if (buf !=""){
 	//printf("%s",buf);
@@ -270,11 +274,11 @@ std::string::size_type sz;
 
 	for(int i = 0; i < words.size(); i++)
 	{
-	//	std::cout << i << words[i] << std::endl;
+	///	std::cout << i << words[i] << std::endl;
 		if (i==0){
             if  ( (atof(words[i].c_str()) >= 0.01) || (atof(words[i].c_str()) <= -0.01)){
              GX=atof(words[i].c_str());
-	    printf("0%f : thisspot\n",atof(words[i].c_str() ));
+	   /// printf("0%f : thisspot\n",atof(words[i].c_str() ));
 
            // GX=stof(words[i].substr(sz));
            // GX=stof(words[i],&sz);
