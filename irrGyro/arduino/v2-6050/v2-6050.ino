@@ -1,10 +1,10 @@
 
-#include <MPU6050_tockn.h>
-#include <Wire.h>
+#include <MPU6050_tockn-swire.h>
+//#include <Wire.h>
 
 #define test
 
-MPU6050 mpu6050(Wire);
+MPU6050 mpu6050;
 //#define test //adds in the z axis
 long timer = 0;
 float ix = 0;
@@ -21,7 +21,7 @@ int count = 0;
 void setup() {
   Serial.begin(9600);
   //Wire.begin();
-  mpu6050.begin();
+  mpu6050.begin(A4,A5);
   calibrate();
   //   Serial.print(ix);
   // Serial.print(iy);
@@ -56,7 +56,7 @@ void loop() {
   }
   mpu6050.update();
 
-  if (millis() - timer > 500) {
+  if (millis() - timer > 40) {
     curx = mpu6050.getAngleX();
     cury = mpu6050.getAngleY();
 #ifdef test
