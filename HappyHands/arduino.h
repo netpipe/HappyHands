@@ -211,6 +211,11 @@ int argc = sizeof(argv) / sizeof(char*) -1;
         case 'r':{ //run loop
 
      while (1){
+
+         if( fd == -1 ) error("serial port not opened");
+         memset(buf,0,buf_max);  //
+         serialport_read_until(fd, buf, eolchar, buf_max, timeout);
+
 std::string::size_type sz;
 
 //https://www.codegrepper.com/code-examples/cpp/c%2B%2B+print+vector+of+strings
@@ -227,7 +232,7 @@ std::string::size_type sz;
 		if (i==0){
             if  ( (atof(words[i].c_str()) >= 0.01) || (atof(words[i].c_str()) <= -0.01)){
              GX=atof(words[i].c_str());
-	   /// printf("0%f : thisspot\n",atof(words[i].c_str() ));
+        printf("0%f : thisspot\n",atof(words[i].c_str() ));
 
            // GX=stof(words[i].substr(sz));
            // GX=stof(words[i],&sz);
@@ -238,11 +243,11 @@ std::string::size_type sz;
 		}
 		if (i==1){
             GY=atof(words[i].c_str());
-		  //      printf("1%f : thisspot\n",atof(words[i].c_str() ));
+                printf("1%f : thisspot\n",atof(words[i].c_str() ));
 		}
 		if (i==2){
 		            GZ=atof(words[i].c_str()); //comment out rotation here to see it more like a joystick
-		    //          printf("2%f : thisspot\n",atof(words[i].c_str() ));
+                      printf("2%f : thisspot\n",atof(words[i].c_str() ));
 		}
         //***** alternate method *******
 		//std::cout << myVector.at(i) << std::endl;
