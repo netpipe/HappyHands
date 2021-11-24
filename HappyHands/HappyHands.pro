@@ -25,6 +25,7 @@ SOURCES += \
     oglwidget.cpp
 
 HEADERS += \
+    arduino.h \
     mainwindow.h \
     oglwidget.h
 
