@@ -8,3 +8,4 @@ todo maybe use an ai to find gravity vector from the sensor data. or use dot pro
 
 
 https://github.com/netpipe/frostWM/tree/master/x11input extra stuff
+https://www.youtube.com/watch?v=Li6GyubiEls
