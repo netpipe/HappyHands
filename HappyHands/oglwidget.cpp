@@ -1,6 +1,7 @@
 #ifdef OPENGL
 #include "oglwidget.h"
 #include <QThread>
+#include <qevent.h>
 //https://stackoverflow.com/questions/31522637/how-do-i-render-a-triangle-in-qopenglwidget/31524956
 OGLWidget::OGLWidget(QWidget *parent)
     : QOpenGLWidget(parent)
@@ -10,6 +11,9 @@ OGLWidget::OGLWidget(QWidget *parent)
     setMouseTracking(true);
     setFocusPolicy(Qt::ClickFocus);
     setFocus(Qt::OtherFocusReason);
+
+        this->installEventFilter(this);
+
 }
 
 OGLWidget::~OGLWidget()
@@ -54,4 +58,19 @@ void OGLWidget::resizeGL(int w, int h)
     glLoadIdentity();
     gluLookAt(0,0,5,0,0,0,0,1,0);
 }
+
+
+bool OGLWidget::eventFilter( QObject *o, QEvent *e )
+{
+    if ( e->type() == QEvent::KeyPress ) {
+        // special processing for key press
+        QKeyEvent *k = (QKeyEvent *)e;
+        qDebug( "Ate key press %d", k->key() );
+        return 1; // eat event
+    } else {
+        // standard event processing
+        return 0;
+    }
+}
+
 #endif

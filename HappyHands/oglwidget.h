@@ -17,6 +17,7 @@ protected:
     void initializeGL();
     void resizeGL(int w, int h);
     void paintGL();
+         bool eventFilter( QObject *o, QEvent *e );
 };
 
 #endif // OGLWIDGET_H

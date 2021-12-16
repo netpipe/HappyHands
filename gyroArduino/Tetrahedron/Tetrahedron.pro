@@ -16,7 +16,8 @@ TEMPLATE = app
 SOURCES += main.cpp\
         tetrahedron.cpp
 
-HEADERS  += tetrahedron.h
+HEADERS  += tetrahedron.h \
+    arduino/arduino.h
 
 FORMS    += tetrahedron.ui
 
